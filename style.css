@@ -1,0 +1,49 @@
+body {
+	background-color: #333;
+	color: white;
+	font-size: 22px;
+}
+
+h1 {
+	text-align: center;
+}
+
+ul {
+	margin: auto 5%;
+	padding: 0px;
+}
+
+#messages li:nth-child(odd) {
+	background-color: #999;
+	color: black;
+}
+
+li {
+	list-style-type: none;
+}
+
+#formContainer {
+	margin-bottom: 10px;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+#input {
+	padding: 3px;
+	width: 90%;
+}
+
+button {
+	position: relative;
+	right: 0px;
+	padding: 5px 15px;
+	border-radius: 3px;
+	border: none;
+	width: 5%;
+}
+
+button:hover {
+	cursor: pointer;
+	color: white;
+}
