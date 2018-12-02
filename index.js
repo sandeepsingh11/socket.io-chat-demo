@@ -21,18 +21,30 @@ app.get('/func.js', function(req, res){
 
 // upon connection
 io.on('connection', function(socket) {
-	console.log(socket.id);
-	io.emit('chat message', 'a user joined the chat!');
 
-	// func when 'send' button is clicked
-	socket.on('chat message', function(msg) {
+	// func when user submits their chat name
+	socket.on('chat name', function(name) {
+		socket.chatName = name;
+		var joinMsg = name + ' has joined the chat!';
+
 		// go to func.js -> socket.on('chat message')
-		io.emit('chat message', msg);
+		io.emit('chat message', joinMsg);
+	})
+
+	// func to display message
+	socket.on('chat message', function(msg) {
+		var fullMsg = socket.chatName + ': ' + msg;
+
+		// go to func.js -> socket.on('chat message')
+		io.emit('chat message', fullMsg);
 	});
 
 	// upon disconnection
 	socket.on('disconnect', function() {
-		io.emit('chat message', 'a user left the chat!');
+		var leaveMsg = socket.chatName + ' has left the chat';
+
+		// go to func.js -> socket.on('chat message')
+		io.emit('chat message', leaveMsg);
 	});
 });
 

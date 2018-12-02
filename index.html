@@ -5,22 +5,37 @@
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<!-- <script type="text/javascript">
-		var socket = io();
-	</script> -->
+
 	<script type="text/javascript" src="func.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<h1>Socket.io Chat!</h1>
-	<div>
-		<ul id="messages"></ul>
+
+	<!-- prompt user ui -->
+	<div id="getUser">
+		<div>
+			<h1>What is your name?</h1>
+
+			<form id="chatNameForm">
+				<input id="chatName">
+				<button>Confirm</button>
+			</form>
+		</div>
 	</div>
 
+	<!-- messages -->
+	<div>
+		<ul id="messages"></ul>
+		<div id="scrollHere"></div>
+	</div>
+
+	<!-- send message -->
 	<div id="formContainer">
-		<form>
-			<input id="input">
+
+		<form id="messageForm">
+			<input id="message">
 			<button>Send</button>
 		</form>
 	</div>

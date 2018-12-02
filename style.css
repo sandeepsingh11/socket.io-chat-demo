@@ -1,15 +1,54 @@
 body {
 	background-color: #333;
 	color: white;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 h1 {
 	text-align: center;
 }
 
+#getUser {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: silver;
+	color: black;
+	text-align: center;
+	z-index: 3;
+	display: none;
+}
+
+#getUser div {
+	position: relative;
+	top: 25%;
+	display: block;
+	margin: auto;
+}
+
+#chatName {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	font-size: 24px;
+}
+
+#getUser button {
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: none;
+	font-size: 24px;
+}
+
+#getUser button:hover {
+	cursor: pointer;
+	background-color: #333;
+	color: white;
+}
+
 ul {
 	margin: auto 5%;
+	margin-bottom: 10%;
 	padding: 0px;
 }
 
@@ -22,28 +61,39 @@ li {
 	list-style-type: none;
 }
 
+#scrollHere {
+	margin-top: 10%;
+}
+
 #formContainer {
 	margin-bottom: 10px;
 	position: fixed;
+	left: 0px;
 	bottom: 0px;
 	width: 100%;
 }
 
-#input {
-	padding: 3px;
+#messageForm {
+	text-align: center;
+}
+
+#message {
+	/*padding: 3px;*/
 	width: 90%;
-}
-
-button {
-	position: relative;
-	right: 0px;
-	padding: 5px 15px;
-	border-radius: 3px;
+	padding: 10px;
+	border-radius: 5px;
 	border: none;
-	width: 5%;
 }
 
-button:hover {
+#formContainer button {
+	width: 5%;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+}
+
+#formContainer button:hover {
 	cursor: pointer;
-	color: white;
+	background-color: skyblue;
+	color: black;
 }
