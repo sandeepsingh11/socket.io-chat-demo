@@ -3,6 +3,8 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 
+const port = process.env.PORT || 8080; // uses server env port if exists, else uses default 8080
+
 app.get('/', function(req, res){
 	// serve this html file
 	res.sendFile(__dirname + '/index.html');
@@ -48,6 +50,6 @@ io.on('connection', function(socket) {
 	});
 });
 
-server.listen(3000, function(){
-	console.log('listening on *:3000');
+server.listen(port, function(){
+	console.log('listening on ' + port);
 });
