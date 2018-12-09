@@ -46,19 +46,41 @@ h1 {
 	color: white;
 }
 
-ul {
-	margin: auto 5%;
+#usersDiv {
+	position: fixed;
+	top: 5px;
+	right: 10px;
+	width: 130px;
+}
+
+h5 {
+	margin: 0px;
+}
+
+#liveUsers {
+	margin: 0px;
+	padding-left: 20px;
+	max-width: 110px;
+	font-size: 20px;
+	word-break: break-all;
+	list-style-type: circle;
+}
+
+#messages {
+	margin-right: 145px;
 	margin-bottom: 10%;
 	padding: 0px;
+}
+
+#messages li {
+	padding-left: 3px;
+	border-radius: 2px;
+	list-style-type: none;
 }
 
 #messages li:nth-child(odd) {
 	background-color: #999;
 	color: black;
-}
-
-li {
-	list-style-type: none;
 }
 
 #scrollHere {

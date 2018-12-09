@@ -2,6 +2,7 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+var liveUsers = [];
 
 const port = process.env.PORT || 8080; // uses server env port if exists, else uses default 8080
 
@@ -31,7 +32,15 @@ io.on('connection', function(socket) {
 
 		// go to func.js -> socket.on('chat message')
 		io.emit('chat message', joinMsg);
-	})
+
+
+
+		// update the currently live user list
+		liveUsers.push(name);
+
+		// go to func.js -> socket.on('update users')
+		io.emit('update users', liveUsers);
+	});
 
 	// func to display message
 	socket.on('chat message', function(msg) {
@@ -47,9 +56,25 @@ io.on('connection', function(socket) {
 
 		// go to func.js -> socket.on('chat message')
 		io.emit('chat message', leaveMsg);
+
+
+		// remove user from the currently live user list
+		for (var i = 0; i < liveUsers.length; i++) {
+			if (socket.chatName === liveUsers[i]) {
+				liveUsers.splice(i, 1);
+
+				// go to func.js -> socket.on('update users')
+				io.emit('update users', liveUsers);
+
+				return;
+			}
+		}
 	});
 });
 
 server.listen(port, function(){
 	console.log('listening on ' + port);
 });
+
+
+// func.js is a singular client --> index.js is the server --> index then broadcasts to all clients ('all' func)

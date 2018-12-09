@@ -9,6 +9,7 @@ $(document).ready(function() {
 		// go to index.js -> socket.on('chat name')
 		socket.emit('chat name', $('#chatName').val());
 
+		// hide this ui
 		$('#getUser').css('display', 'none');
 
 		return false;
@@ -31,6 +32,17 @@ $(document).ready(function() {
 
 		var scrollHere = document.getElementById('scrollHere');
 		scrollHere.scrollIntoView(false);
+	});
+
+	// update current live users and display it
+	socket.on('update users', function(users) {
+		// remove previous user list
+		$('#liveUsers').children().remove();
+
+		// go through list of users and add them
+		for (var i = 0; i < users.length; i++) {
+			$('#liveUsers').append($('<li>').text(users[i]));
+		}
 	});
 });
 
